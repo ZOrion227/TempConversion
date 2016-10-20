@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>T2T</title>
+    <script>
+        "use strict";
+        window.onload = init;
+        function init() {
+//event listener:
+            document.getElementById
+            ("shapeForm").onsubmit = calculate;
+        }
+        function calculate() {
+//Output variables
+            var celsiustext;
+            var fahrenheittext;
+//Input variables
+            var celsius = document.getElementById("celsius");
+            var fahrenheit = document.getElementById("fahrenheit");
+//Make sure of the following:
+//1. Referenced objects exists
+            if (celsius && fahrenheit) {
+//2. Referenced object contain a valid value
+                if (isNaN(fahrenheit.value) ||
+                        (parseFloat(fahrenheit.value) <= 0)) {
+                    fahrenheit.value = "Enter # > 0";
+//Exit the function
+                    return false;
+                }
+                if (isNaN(celsius.value) ||
+                        (parseFloat(celsius.value) <= 0)) {
+                    celsius.value = "Enter # > 0";
+//Exit the function
+                    return false;
+                }
+//Calculate:
+                celsiustext = Math.round (
+
+                        (fahrenheit.value - 32) * 5 / 9);
+                fahrenheittext = Math.round (  (celsius.value * 9 / 5) + 32)
+                ;
+//Format to 4 decimal places
+                celsiustext = celsiustext.toFixed(0);
+                fahrenheittext = fahrenheittext.toFixed(0);
+//Output volume and area
+                document.getElementById("fahrenheittext").value = fahrenheittext;
+                document.getElementById("celsiustext").value = celsiustext;
+            }//if radius/height valid
+//Prevent form resubmission:
+            return false;
+//All functionality is on the
+//client side.
+//No need to send to server.
+        }{//end function
+       /* function () {
+            document.getElementById("celsius").value = "0";
+            document.getElementById("fahrenheit").value = "0";
+            document.getElementById("fahrenheittext").value = "";
+            document.getElementById("celsiustext").value = "";
+       */ } </script>
+    <style>
+        body {
+            background-color: #7fff00;
+        }
+    </style>
+</head>
+<body>
+
+<font size="15">Temperature Conversion</font><Div></Div>
+<label>Please insert your temperature </label> <div></div>
+<img src="Thermometer.jpeg">
+<div id="Div">
+<input type="text" id="celsius" onkeyup="calculate ()" name="celsius">
+<Label for="celsius"> Degrees Celsius</Label><div></div>
+<input type="submit" id="fahrenheittext" name="fahrenheittext" value="Convert To Fahrenheit"> ºF<div></div>
+<label>Equals</label><div></div>
+<input type="text" id="fahrenheit" onkeyup="calculate ()"  name="fahrenheit">
+<Label for="fahrenheit">Degrees Fahrenheit</Label><div></div>
+<input type="submit" id="celsiustext" name="celsiustext" value="Convert To Celsius">ºC
+</div>
+</body>
+</html>
